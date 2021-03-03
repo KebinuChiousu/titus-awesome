@@ -9,6 +9,7 @@ local mat_icon_button = require('widget.material.icon-button')
 local mat_icon = require('widget.material.icon')
 local dpi = require('beautiful').xresources.apply_dpi
 local icons = require('theme.icons')
+local battery = require('widget.text-battery.battery-widget')
 
 -- Titus - Horizontal Tray
 local systray = wibox.widget.systray()
@@ -16,7 +17,7 @@ local systray = wibox.widget.systray()
   systray:set_base_size(20)
   systray.forced_height = 20
 
-  -- Clock / Calendar 24h format
+-- Clock / Calendar 24h format
 -- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 9">%d.%m.%Y\n     %H:%M</span>')
 -- Clock / Calendar 12AM/PM fornat
 local textclock = wibox.widget.textclock('<span font="Roboto Mono 12">%I:%M %p</span>')
@@ -132,6 +133,8 @@ local TopPanel = function(s)
         wibox.container.margin(systray, dpi(3), dpi(3), dpi(6), dpi(3)),
         -- Layout box
         LayoutBox(s),
+        -- battery
+        battery {},
         -- Clock
         clock_widget,
       }
